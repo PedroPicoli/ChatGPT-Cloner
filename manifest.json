@@ -1,0 +1,41 @@
+{
+    "manifest_version": 3,
+    "name": "ChatGPT Cloner",
+    "version": "1.0",
+    "description": "Clone ChatGPT conversations to a new chat keeping full context.",
+    "author": "Pedro Picoli",
+    "icons": {
+        "16": "icon.png",
+        "48": "icon.png",
+        "128": "icon.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://chatgpt.com/*",
+                "https://chat.openai.com/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "css": [
+                "styles.css"
+            ],
+            "run_at": "document_end",
+            "all_frames": false
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "icon.png",
+                "content.js",
+                "styles.css"
+            ],
+            "matches": [
+                "https://chatgpt.com/*",
+                "https://chat.openai.com/*"
+            ]
+        }
+    ]
+}

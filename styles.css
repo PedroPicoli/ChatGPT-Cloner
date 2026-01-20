@@ -1,0 +1,134 @@
+/* ============================================
+   ChatGPT Cloner - Styles
+   ============================================ */
+
+/* Clone Button - Inline with ChatGPT button */
+.clone-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  margin-left: 4px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-secondary, #8e8ea0);
+  vertical-align: middle;
+}
+
+.clone-btn:hover {
+  background: var(--surface-secondary, rgba(142, 142, 160, 0.1));
+  color: var(--text-primary, #ececf1);
+  transform: scale(1.05);
+}
+
+.clone-btn:active {
+  transform: scale(0.95);
+}
+
+/* Clone Icon SVG */
+.clone-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Tooltip */
+.clone-btn::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 6px 12px;
+  background: var(--surface-tertiary, #2f2f2f);
+  color: var(--text-primary, #ececf1);
+  font-size: 12px;
+  font-weight: 500;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.clone-btn:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Loading State */
+.clone-btn.loading {
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.clone-btn.loading svg {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Success State */
+.clone-btn.success {
+  color: #10a37f;
+}
+
+/* Error State */
+.clone-btn.error {
+  color: #ef4444;
+}
+
+/* Toast Notification */
+.clone-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  padding: 12px 20px;
+  background: var(--surface-tertiary, #2f2f2f);
+  color: var(--text-primary, #ececf1);
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  z-index: 10000;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+}
+
+.clone-toast.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.clone-toast.success {
+  border-left: 4px solid #10a37f;
+}
+
+.clone-toast.error {
+  border-left: 4px solid #ef4444;
+}
+
+.clone-toast.info {
+  border-left: 4px solid #3b82f6;
+}
